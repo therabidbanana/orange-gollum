@@ -10,9 +10,12 @@ begin
     gem.email = "therabidbanana@gmail.com"
     gem.homepage = "http://orangerb.com"
     gem.authors = ["David Haslem"]
+    gem.files = FileList['lib/**/*']
+    gem.test_files = FileList['spec/**/*.rb']
     gem.add_development_dependency "rspec", ">= 1.2.9"
     gem.add_development_dependency "yard", ">= 0"
     gem.add_dependency "gollum", ">= 0"
+    gem.add_dependency "orange-core", ">= 0"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
   Jeweler::GemcutterTasks.new
