@@ -5,13 +5,14 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "orange-gollum"
-    gem.summary = %Q{TODO: one-line summary of your gem}
-    gem.description = %Q{TODO: longer description of your gem}
+    gem.summary = %Q{Orange-Gollum integrates a gollum powered wiki with your site}
+    gem.description = %Q{Orange-Gollum uses the gollum gem to integrate a wiki with an orange site}
     gem.email = "therabidbanana@gmail.com"
     gem.homepage = "http://orangerb.com"
     gem.authors = ["David Haslem"]
     gem.add_development_dependency "rspec", ">= 1.2.9"
     gem.add_development_dependency "yard", ">= 0"
+    gem.add_dependency "gollum", ">= 0"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
   Jeweler::GemcutterTasks.new

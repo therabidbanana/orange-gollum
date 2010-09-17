@@ -1,0 +1,34 @@
+.guide
+  .main  
+    %header
+      .actions
+        %a{:href => resource.wiki_url(packet) + path} « Back
+        %h1 History of #{page.title}
+    %form#history{:method=>"post", :action=>resource.wiki_url(packet)+"compare/#{path}"}
+      %table.commits(cellpadding="0" cellspacing="0")
+        %tr
+          %th(colspan="5")
+            Select any two versions to 
+            %input{:type=>"submit", :value=>"Compare"}
+        - versions.each do |version|
+          %tr.commit
+            %td.checkbox
+              %input(name="versions[]" type="checkbox" value="#{version[:id]}")
+            %td.sha
+              %a{:href=>"/#{name}/#{version[:id]}"}= version[:id7]
+            %td.author{:nowrap => true}
+              %img(src="http://www.gravatar.com/avatar/#{version[:gravatar]}?s=16" alt="Gravatar")
+              #{version[:author]}
+            %td.message= version[:message]
+            %td.date{:nowrap => true}= version[:date]
+      %footer.pagination
+        .previous_page
+          - if page_num == 1
+            %span.disabled &laquo; Previous
+          - else
+            %a{:href=>"/history/#{page.name}?page_num=#{page_num-1}", :hotkey=>"h"} &laquo; Previous
+        .next_page
+          - if versions.size == Gollum::Page.per_page
+            %a{:href=>"/history/#{page.name}?page_num=#{page_num+1}", :hotkey=>"1"} &raquo; Next
+          - else
+            %span.disabled &raquo; Next

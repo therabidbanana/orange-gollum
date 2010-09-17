@@ -1,0 +1,33 @@
+%script var gollum_root = "#{resource.wiki_url(packet)}";
+#main
+  .site
+    #guides
+      .write
+        %a{:href => resource.wiki_url(packet) + name} « Back
+        %h1= title
+        %form.edit_wiki{:method => "post"}
+          %div
+            %label
+              Title
+              %br/
+              %input.text{:name => "rename", :type => "text", :value => name}/
+            %br/
+            #wiki-form.comment-form.wiki-form
+              %ul.tabs.inline-tabs
+                %li
+                  %a{:action => "write", :href => "#write_bucket"} Write
+                %li
+                  %a{:action => "preview", :href => "#preview_bucket"} Preview
+              #write_bucket.tab-content
+                = resource.do_view(packet, :editbar)
+                .inner
+                  %textarea{:name => "content"}= content
+              #preview_bucket.tab-content.content-body.content.wikistyle.gollum
+                %p Loading content...
+            %label
+              Edit Summary
+              %small (Briefly describe the changes you have made)
+              %br/
+              %input.text{:name => "message", :type => "text"}/
+            .actions
+              %input{:type => "submit", :value => "Save page"}/

@@ -1,0 +1,22 @@
+.guide.gollum
+  .main
+    %header
+      .actions
+        %a{:href => resource.wiki_url(packet) + name} « Back
+      %h1 Comparison of #{name}: #{versions[0][0..6]} &rarr; #{versions[1][0..6]}
+    #files
+      .file
+        .meta
+          .info
+            %span.icon
+              %img{:alt=>"Txt", :height=>"16", :src=>"/images/txt.png", :width=>"16"}
+            = page.path
+        .data.highlight
+          %table(cellpadding="0" cellspacing="0" width="100%")
+            - lines.each do |line|
+              %tr
+                %td.line_numbers= line[:ldln]
+                %td.line_numbers= line[:rdln]
+                %td{:width=>"100%"}
+                  %div{:class => line[:class]}
+                    %pre= line[:line]

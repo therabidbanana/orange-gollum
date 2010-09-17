@@ -1,6 +1,7 @@
 = orange-gollum
 
-Description goes here.
+Orange gollum uses the gollum gem (http://github.com/github/gollum) to integrate a git-powered wiki
+with your existing Orange site. It will be used to power the wiki on orangerb.com.
 
 == Note on Patches/Pull Requests
  

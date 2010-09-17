@@ -1,0 +1,139 @@
+GIT
+  remote: git://github.com/orange-project/orange-sparkles.git
+  revision: c0339c0e01b74e56a487c0302cf66f7e5f2d8938
+  specs:
+    orange-sparkles (0.5.9)
+      kramdown
+      orange-core (>= 0.5.7)
+      orange-more (>= 0.5.7)
+      rack-abstract-format
+
+GIT
+  remote: git://github.com/therabidbanana/orange-core.git
+  revision: 54ed60985aa0974f6bde6ab858ce547783008d0e
+  specs:
+    orange-core (0.7.0)
+      crack
+      dm-core (>= 1.0.0)
+      dm-migrations (>= 1.0.0)
+      haml (>= 2.2.13)
+      rack (>= 1.0.1)
+
+GIT
+  remote: git://github.com/therabidbanana/orange-more.git
+  revision: 906d5af71f761e58d848aaf5ec48f711d6aecb73
+  specs:
+    orange-more (0.6.5)
+      dm-is-awesome_set (>= 0.11.0)
+      dm-timestamps (>= 1.0.0)
+      gattica
+      mail
+      openid_dm_store
+      orange-core (>= 0.5.7)
+      rack-openid
+      radius
+      rest-client
+
+GEM
+  remote: http://rubygems.org/
+  specs:
+    activesupport (3.0.0)
+    addressable (2.2.1)
+    albino (1.0)
+    crack (0.1.8)
+    data_objects (0.10.2)
+      addressable (~> 2.1)
+    diff-lcs (1.1.2)
+    dm-adjust (1.0.2)
+      dm-core (~> 1.0.2)
+    dm-aggregates (1.0.2)
+      dm-core (~> 1.0.2)
+    dm-core (1.0.2)
+      addressable (~> 2.2)
+      extlib (~> 0.9.15)
+    dm-do-adapter (1.0.2)
+      data_objects (~> 0.10.2)
+      dm-core (~> 1.0.2)
+    dm-is-awesome_set (1.0.1)
+      dm-adjust (~> 1.0)
+      dm-aggregates (~> 1.0)
+      dm-core (~> 1.0)
+      dm-transactions (~> 1.0)
+    dm-migrations (1.0.2)
+      dm-core (~> 1.0.2)
+    dm-mysql-adapter (1.0.2)
+      dm-do-adapter (~> 1.0.2)
+      do_mysql (~> 0.10.2)
+    dm-sqlite-adapter (1.0.2)
+      dm-do-adapter (~> 1.0.2)
+      do_sqlite3 (~> 0.10.2)
+    dm-timestamps (1.0.2)
+      dm-core (~> 1.0.2)
+    dm-transactions (1.0.2)
+      dm-core (~> 1.0.2)
+    do_mysql (0.10.2)
+      data_objects (= 0.10.2)
+    do_sqlite3 (0.10.2)
+      data_objects (= 0.10.2)
+    extlib (0.9.15)
+    gattica (0.4.3)
+      hpricot (>= 0.6.164)
+    github-markup (0.5.0)
+    gollum (1.0.1)
+      albino (~> 1.0)
+      github-markup (>= 0.4.0, < 1.0.0)
+      grit (~> 2.1)
+      mustache (>= 0.11.2, < 1.0.0)
+      nokogiri (~> 1.4)
+      sanitize (~> 1.0)
+      sinatra (~> 1.0)
+    grit (2.2.0)
+      diff-lcs (~> 1.1)
+      mime-types (~> 1.15)
+    haml (3.0.18)
+    hpricot (0.8.2)
+    kramdown (0.10.0)
+    mail (2.2.6.1)
+      activesupport (>= 2.3.6)
+      mime-types
+      treetop (>= 1.4.5)
+    mime-types (1.16)
+    mustache (0.11.2)
+    nokogiri (1.4.3.1)
+    openid_dm_store (0.2.0)
+      dm-core
+      ruby-openid
+    orange (0.5.8)
+      orange-core (>= 0.5.7)
+      orange-more (>= 0.5.7)
+      orange-sparkles (>= 0.5.7)
+      rack (>= 1.0.1)
+    polyglot (0.3.1)
+    rack (1.2.1)
+    rack-abstract-format (0.9.9)
+    rack-openid (1.2.0)
+      rack (>= 1.1.0)
+      ruby-openid (>= 2.1.8)
+    radius (0.6.1)
+    rest-client (1.6.1)
+      mime-types (>= 1.16)
+    ruby-openid (2.1.8)
+    sanitize (1.2.1)
+      nokogiri (~> 1.4.1)
+    sinatra (1.0)
+      rack (>= 1.0)
+    treetop (1.4.8)
+      polyglot (>= 0.3.1)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  dm-mysql-adapter
+  dm-sqlite-adapter
+  gollum
+  openid_dm_store
+  orange
+  orange-core!
+  orange-more!
+  orange-sparkles!

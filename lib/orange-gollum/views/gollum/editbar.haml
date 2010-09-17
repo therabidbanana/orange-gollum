@@ -1,0 +1,1564 @@
+#editbar
+  .menu
+    .group.group-separator
+      %span.link.button{:title => "Link"} Link
+      %span.image.button{:title => "Image"} Image
+    .group.group-separator
+      %span.bold.button{:title => "Bold"} Bold
+      %span.italic.button{:title => "Italic"} Italic
+    .group.group-separator
+      %span.ul.button{:title => "Unordered List"} Unordered List
+      %span.ol.button{:title => "Ordered List"} Ordered List
+    .group
+      %span.tab.help
+        %a{:href => "#"} Help
+    .group.group-right
+      %span.tab.format
+        Format:
+        %select#wiki_format{:name => "format"}
+          %option{:selected => "true", :value => "markdown"} Markdown
+  .sections
+    .toc
+      .headers Headers
+      .links.gollum Links
+      .images.gollum Images
+      .code.gollum Code
+      .formatting Formatting
+      .lists Lists
+      .math.gollum Math
+    .pages
+      / Gollum Links
+      .page.gollum.links
+        %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+          %tr
+            %th Description
+            %th What you type
+            %th What you get
+          %tr
+            %td Internal link
+            %td
+              %pre [[Page Title]]
+              %pre [[Link Label|Page Title]]
+            %td
+              %a{:href => "Page-Title"} Page Title
+              %br/
+              %a{:href => "Page-Title"} Link Label
+          %tr
+            %td External link
+            %td
+              %pre [[http://example.com]]
+              %pre [[Example|http://example.com]]
+            %td
+              %a{:href => "http://example.com"} http://example.com
+              %br/
+              %a{:href => "http://example.com"} Example
+          %tr
+            %td File link
+            %td
+              %pre [[Absolute PDF|/images/example.pdf]]
+              %pre [[Relative PDF|example.pdf]]
+            %td
+              %a{:href => "/images.example.pdf"} Absolute PDF
+              %br/
+              %a{:href => "/example.pdf"} Relative PDF
+          %tr
+            %td Escaped link
+            %td
+              %pre '[[Page Title]]
+            %td
+              [[Page Title]]
+      / Gollum Images
+      .page.gollum.images
+        %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+          %tr
+            %th Description
+            %th What you type
+            %th{:width => "25%"} What you get
+          %tr
+            %td Basic internal image
+            %td
+              %pre [[/images/example.png]]
+            %td
+              %img{:src => "/assets/_gollum_/images/example.png"}/
+          %tr
+            %td Basic external image
+            %td
+              %pre [[http://example.com/example.png]]
+            %td
+              %img{:src => "/assets/_gollum_/images/example.png"}/
+          %tr
+            %td Image with alt text
+            %td
+              %pre [[/example.png|alt=Shapes]]
+            %td
+              %img{:alt => "Shapes", :src => "/assets/_gollum_/images/example.png"}/
+          %tr
+            %td Image with frame and caption
+            %td
+              %pre [[/example.png|frame|alt=Shapes]]
+            %td
+              .wikistyle
+                %span.frame
+                  %span
+                    %img{:alt => "Shapes", :src => "/assets/_gollum_/images/example.png"}/
+                    %span Shapes
+          %tr
+            %td Image with specific width
+            %td
+              %pre [[/example.png|width=40px]]
+            %td
+              %img{:src => "/assets/_gollum_/images/example.png", :width => "40px"}/
+          %tr
+            %td Image with specific height
+            %td
+              %pre [[/example.png|height=40px]]
+            %td
+              %img{:height => "40px", :src => "/assets/_gollum_/images/example.png"}/
+          %tr
+            %td Image aligned left
+            %td
+              %pre The quick brown fox jumps.
+              %pre               %pre [[/example.png|align=left]]
+            %td
+              .wikistyle
+                %p The quick brown fox jumps.
+                %p
+                  %span.align-left
+                    %span
+                      %img{:alt => "Shapes", :src => "/assets/_gollum_/images/example.png"}/
+          %tr
+            %td Image aligned center
+            %td
+              %pre The quick brown fox jumps.
+              %pre               %pre [[/example.png|align=center]]
+            %td
+              .wikistyle
+                %p The quick brown fox jumps.
+                %p
+                  %span.align-center
+                    %span
+                      %img{:alt => "Shapes", :src => "/assets/_gollum_/images/example.png"}/
+          %tr
+            %td Image aligned right
+            %td
+              %pre The quick brown fox jumps.
+              %pre               %pre [[/example.png|align=right]]
+            %td
+              .wikistyle
+                %p The quick brown fox jumps.
+                %p
+                  %span.align-right
+                    %span
+                      %img{:alt => "Shapes", :src => "/assets/_gollum_/images/example.png"}/
+          %tr
+            %td Image floated left
+            %td
+              %pre
+                :preserve
+                  The quick brown fox jumps
+                  [[/example.png|float|align=left]]
+                  over the lazy dog and feels as
+                  if he were in seventh heaven.            %td
+              .wikistyle
+                %p
+                  The quick brown fox jumps
+                  %span.float-left
+                    %span
+                      %img{:alt => "Shapes", :src => "/assets/_gollum_/images/example.png"}/
+                  over the lazy dog and feels as if he were in seventh heaven.
+          %tr
+            %td Image floated left
+            %td
+              %pre
+                :preserve
+                  The quick brown fox jumps
+                  [[/example.png|float|align=right]]
+                  over the lazy dog and feels as
+                  if he were in seventh heaven.            %td
+              .wikistyle
+                %p
+                  The quick brown fox jumps
+                  %span.float-right
+                    %span
+                      %img{:alt => "Shapes", :src => "/assets/_gollum_/images/example.png"}/
+                  over the lazy dog and feels as if he were in seventh heaven.
+      / Gollum Code
+      .page.gollum.code
+        %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+          %tr
+            %th Description
+            %th What you type
+            %th What you get
+          %tr
+            %td Hilighted Code block
+            %td
+              %pre
+                ```ruby
+                %span.invisible ¬
+                = succeed "def" do
+                  %span.invisible ··
+                foo
+                %span.invisible ¬
+                = succeed "puts" do
+                  %span.invisible ····
+                'bar'
+                %span.invisible ¬
+                = succeed "end" do
+                  %span.invisible ··
+                %span.invisible ¬
+                ```
+            %td
+              .highlight
+                %pre
+                  %span.k def
+                  %span.nf foo
+                  %span.nb puts
+                  %span.s1 'bar'
+                  %span.k end
+        %table.shortcodes{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+          %tr
+            %th{:colspan => "2"} Language Identifiers for use in Hilighted Code Blocks
+          %tr
+            %td
+              %ul
+                %li
+                  %b> ABAP
+                  \: abap
+                %li
+                  %b> ActionScript
+                  \: as, actionscript
+                %li
+                  %b> ActionScript 3
+                  \: as3, actionscript3
+                %li
+                  %b> Ada
+                  \: ada, ada95ada2005
+                %li
+                  %b> ANTLR
+                  \: antlr
+                %li
+                  %b> ANTLR With ActionScript Target
+                  \: antlr-as, antlr-actionscript
+                %li
+                  %b> ANTLR With C# Target
+                  \: antlr-csharp, antlr-c#
+                %li
+                  %b> ANTLR With CPP Target
+                  \: antlr-cpp
+                %li
+                  %b> ANTLR With Java Target
+                  \: antlr-java
+                %li
+                  %b> ANTLR With ObjectiveC Target
+                  \: antlr-objc
+                %li
+                  %b> ANTLR With Perl Target
+                  \: antlr-perl
+                %li
+                  %b> ANTLR With Python Target
+                  \: antlr-python
+                %li
+                  %b> ANTLR With Ruby Target
+                  \: antlr-ruby, antlr-rb
+                %li
+                  %b> ApacheConf
+                  \: apacheconf, aconf, apache
+                %li
+                  %b> AppleScript
+                  \: applescript
+                %li
+                  %b> aspx-cs
+                  \: aspx-cs
+                %li
+                  %b> aspx-vb
+                  \: aspx-vb
+                %li
+                  %b> Asymptote
+                  \: asy, asymptote
+                %li
+                  %b> Bash
+                  \: bash, sh, ksh
+                %li
+                  %b> Bash Session
+                  \: console
+                %li
+                  %b> Batchfile
+                  \: bat
+                %li
+                  %b> BBCode
+                  \: bbcode
+                %li
+                  %b> Befunge
+                  \: befunge
+                %li
+                  %b> Boo
+                  \: boo
+                %li
+                  %b> Brainfuck
+                  \: brainfuck, bf
+                %li
+                  %b> C
+                  \: c
+                %li
+                  %b> C#
+                  \: csharp, c#
+                %li
+                  %b> C++
+                  \: cpp, c++
+                %li
+                  %b> c-objdump
+                  \: c-objdump
+                %li
+                  %b> cfstatement
+                  \: cfs
+                %li
+                  %b> Cheetah
+                  \: cheetah, spitfire
+                %li
+                  %b> Clojure
+                  \: clojure, clj
+                %li
+                  %b> CMake
+                  \: cmake
+                %li
+                  %b> CoffeeScript
+                  \: coffee-script, coffeescript
+                %li
+                  %b> Coldufsion HTML
+                  \: cfm
+                %li
+                  %b> Common Lisp
+                  \: common-lisp, cl
+                %li
+                  %b> cpp-objdump
+                  \: cpp-objdump, c++-objdumb, cxx-objdump
+                %li
+                  %b> CSS
+                  \: css
+                %li
+                  %b> CSS+Django/Jinja
+                  \: css+django, css+jinja
+                %li
+                  %b> CSS+Genshi Text
+                  \: css+genshitext, css+genshi
+                %li
+                  %b> CSS+Mako
+                  \: css+mako
+                %li
+                  %b> CSS+Myghty
+                  \: css+myghty
+                %li
+                  %b> CSS+PHP
+                  \: css+php
+                %li
+                  %b> CSS+Ruby
+                  \: css+erb, css+ruby
+                %li
+                  %b> CSS+Smarty
+                  \: css+smarty
+                %li
+                  %b> Cython
+                  \: cython, pyx
+                %li
+                  %b> D
+                  \: d
+                %li
+                  %b> d-objdump
+                  \: d-objdump
+                %li
+                  %b> Darcs Patch
+                  \: dpatch
+                %li
+                  %b> Debian Control file
+                  \: control
+                %li
+                  %b> Debian Sourcelist
+                  \: sourceslist, sources.list
+                %li
+                  %b> Delphi
+                  \: delphi, pas, pascal, objectpascal
+                %li
+                  %b> Diff
+                  \: diff, udiff
+                %li
+                  %b> Django/Jinja
+                  \: django, jinja
+                %li
+                  %b> Dylan
+                  \: dylan
+                %li
+                  %b> Embedded Ragel
+                  \: ragel-em
+                %li
+                  %b> ERB
+                  \: erb
+                %li
+                  %b> Erlang
+                  \: erlang
+                %li
+                  %b> Erlang erl session
+                  \: erl
+                %li
+                  %b> Evoque
+                  \: evoque
+                %li
+                  %b> Felix
+                  \: felix, flx
+                %li
+                  %b> Fortran
+                  \: fortran
+                %li
+                  %b> GAS
+                  \: gas
+                %li
+                  %b> Genshi
+                  \: genshi, kid, xml+genshi, xml+kid
+                %li
+                  %b> Genshi Text
+                  \: genshitext
+                %li
+                  %b> Gettext Catalog
+                  \: pot, po
+                %li
+                  %b> Gherkin
+                  \: Cucumber, cucumber, Gherkin, gherkin
+                %li
+                  %b> GLSL
+                  \: glsl
+                %li
+                  %b> Gnuplot
+                  \: gnuplot
+                %li
+                  %b> Go
+                  \: go
+                %li
+                  %b> Groff
+                  \: groff, nroff, man
+                %li
+                  %b> Haml
+                  \: haml, HAML
+                %li
+                  %b> Haskell
+                  \: haskell, hs
+                %li
+                  %b> haXe
+                  \: hx, haXe
+                %li
+                  %b> HTML
+                  \: html
+                %li
+                  %b> HTML+Cheetah
+                  \: html+cheetah, html+spitfire
+                %li
+                  %b> HTML+Django/Jinja
+                  \: html+django, html+jinja
+                %li
+                  %b> HTML+Evoque
+                  \: html+evoque
+                %li
+                  %b> HTML+Genshi
+                  \: html+genshi, html+kid
+                %li
+                  %b> HTML+Mako
+                  \: html+mako
+                %li
+                  %b> HTML+Myghty
+                  \: html+myghty
+                %li
+                  %b> HTML+PHP
+                  \: html+php
+                %li
+                  %b> HTML+Smarty
+                  \: html+smarty
+                %li
+                  %b> INI
+                  \: ini, cfg
+            %td
+              %ul
+                %li
+                  %b> Io
+                  \: io
+                %li
+                  %b> IRC logs
+                  \: irc
+                %li
+                  %b> Java
+                  \: java
+                %li
+                  %b> Java Server Page
+                  \: jsp
+                %li
+                  %b> JavaScript
+                  \: js, javascript
+                %li
+                  %b> Lighttpd configuration file
+                  \: lighty, lighttpd
+                %li
+                  %b> Literate Haskell
+                  \: lhs, literate-haskell
+                %li
+                  %b> LLVM
+                  \: llvm
+                %li
+                  %b> Logtalk
+                  \: logtalk
+                %li
+                  %b> Lua
+                  \: lua
+                %li
+                  %b> Makefile
+                  \: make, makefile, mf, bsdmake
+                %li
+                  %b> Makefile
+                  \: basemake
+                %li
+                  %b> Mako
+                  \: mako
+                %li
+                  %b> Matlab
+                  \: matlab, octave
+                %li
+                  %b> Matlab session
+                  \: matlabsession
+                %li
+                  %b> MiniD
+                  \: minid
+                %li
+                  %b> Modelica
+                  \: modelica
+                %li
+                  %b> Modula-2
+                  \: modula2, m2
+                %li
+                  %b> MoinMoin/Trac Wiki markup
+                  \: trac-wiki, moin
+                %li
+                  %b> MOOCode
+                  \: moocode
+                %li
+                  %b> MuPAD
+                  \: mupad
+                %li
+                  %b> MXML
+                  \: mxml
+                %li
+                  %b> Myghty
+                  \: myghty
+                %li
+                  %b> MySQL
+                  \: mysql
+                %li
+                  %b> NASM
+                  \: nasm
+                %li
+                  %b> Newspeak
+                  \: newspeak
+                %li
+                  %b> Nginx configuration file
+                  \: nginx
+                %li
+                  %b> NumPy
+                  \: numpy
+                %li
+                  %b> objdump
+                  \: objdump
+                %li
+                  %b> Objective-C
+                  \: objective-c, objectivec, obj-c, objc
+                %li
+                  %b> Objective-J
+                  \: objective-j, objectivej, obj-j, objj
+                %li
+                  %b> OCaml
+                  \: ocaml
+                %li
+                  %b> Ooc
+                  \: ooc
+                %li
+                  %b> Perl
+                  \: perl, pl
+                %li
+                  %b> PHP
+                  \: php, php3, php4, php5
+                %li
+                  %b> POVRay
+                  \: pov
+                %li
+                  %b> Prolog
+                  \: prolog
+                %li
+                  %b> Python
+                  \: python, py
+                %li
+                  %b> Python 3
+                  \: python3, py3
+                %li
+                  %b> Python 3.0 Traceback
+                  \: py3tb
+                %li
+                  %b> Python console session
+                  \: pycon
+                %li
+                  %b> Python Traceback
+                  \: pytb
+                %li
+                  %b> Ragel
+                  \: ragel
+                %li
+                  %b> Ragel in C Host
+                  \: ragel-c
+                %li
+                  %b> Ragel in CPP Host
+                  \: ragel-cpp
+                %li
+                  %b> Ragel in D Host
+                  \: ragel-d
+                %li
+                  %b> Ragel in Java Host
+                  \: ragel-java
+                %li
+                  %b> Ragel in Objective C Host
+                  \: ragel-objc
+                %li
+                  %b> Ragel in Ruby Host
+                  \: ragel-ruby, ragel-rb
+                %li
+                  %b> Raw token data
+                  \: raw
+                %li
+                  %b> RConsole
+                  \: rconsole, rout
+                %li
+                  %b> REBOL
+                  \: rebol
+                %li
+                  %b> Redcode
+                  \: redcode
+                %li
+                  %b> reStructuredText
+                  \: rst, rest, restructuredtext
+                %li
+                  %b> RHTML
+                  \: rhtml, html+erb, html+ruby
+                %li
+                  %b> Ruby
+                  \: rb, ruby
+                %li
+                  %b> Ruby irb session
+                  \: rbcon, irb
+                %li
+                  %b> S
+                  \: splus, s, r
+                %li
+                  %b> Sass
+                  \: sass, SASS
+                %li
+                  %b> Scala
+                  \: scala
+                %li
+                  %b> Scheme
+                  \: scheme, scm
+                %li
+                  %b> Smalltalk
+                  \: smalltalk, squeak
+                %li
+                  %b> Smarty
+                  \: smarty
+                %li
+                  %b> SQL
+                  \: sql
+                %li
+                  %b> sqlite3con
+                  \: sqlite3
+                %li
+                  %b> SquidConf
+                  \: squidconf, squid.conf, squid
+                %li
+                  %b> Tcl
+                  \: tcl
+                %li
+                  %b> Tcsh
+                  \: tcsh, csh
+                %li
+                  %b> TeX
+                  \: tex, latex
+                %li
+                  %b> Text only
+                  \: text
+                %li
+                  %b> Vala
+                  \: vala, vapi
+                %li
+                  %b> VB.net
+                  \: vb.net, vbnet
+                %li
+                  %b> VimL
+                  \: vim
+                %li
+                  %b> XML
+                  \: xml
+                %li
+                  %b> XML+Cheetah
+                  \: xml+cheetah, xml+spitfire
+                %li
+                  %b> XML+Django/Jinja
+                  \: xml+django, xml+jinja
+                %li
+                  %b> XML+Evoque
+                  \: xml+evoque
+                %li
+                  %b> XML+Mako
+                  \: xml+mako
+                %li
+                  %b> XML+Myghty
+                  \: xml+myghty
+                %li
+                  %b> XML+PHP
+                  \: xml+php
+                %li
+                  %b> XML+Ruby
+                  \: xml+erb, xml+ruby
+                %li
+                  %b> XML+Smarty
+                  \: xml+smarty
+                %li
+                  %b> XSLT
+                  \: xslt
+                %li
+                  %b> YAML
+                  \: yaml
+      / ================================================================
+      / Formatting
+      / ================================================================
+      / Asciidoc Formatting
+      .page.asciidoc.formatting
+        %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+          %tr
+            %th Description
+            %th What you type
+            %th What you get
+          %tr
+            %td Bold
+            %td
+              %pre *bold text*
+            %td
+              %b bold text
+          %tr
+            %td Italic
+            %td
+              %pre _italic text_
+            %td
+              %i italic text
+          %tr
+            %td Monospace
+            %td
+              %pre +monospace text+
+            %td
+              %tt monospace text
+          %tr
+            %td Single quoted
+            %td
+              %pre `single quoted text'
+            %td ‘single quoted text’
+          %tr
+            %td Double quoted
+            %td
+              %pre ``double quoted text''
+            %td “double quoted text”
+          %tr
+            %td Superscript
+            %td
+              %pre x^2^
+            %td
+              x
+              %sup 2
+          %tr
+            %td Subscript
+            %td
+              %pre H~2~O
+            %td
+              H
+              %sub> 2
+              O
+      / Creole Formatting
+      .page.creole.formatting
+        %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+          %tr
+            %th Description
+            %th What you type
+            %th What you get
+          %tr
+            %td Bold
+            %td
+              %pre **bold text**
+            %td
+              %b bold text
+          %tr
+            %td Italic
+            %td
+              %pre //italic text//
+            %td
+              %i italic text
+          %tr
+            %td Monospace
+            %td
+              %pre
+                {
+                %span> {
+                {monospace text}
+                %span> }
+                }
+            %td
+              %tt monospace text
+      / Markdown Formatting
+      .page.markdown.formatting
+        %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+          %tr
+            %th Description
+            %th What you type
+            %th What you get
+          %tr
+            %td Bold
+            %td
+              %pre **bold text**
+            %td
+              %b bold text
+          %tr
+            %td Italic
+            %td
+              %pre *italic text*
+            %td
+              %i italic text
+          %tr
+            %td Inline code
+            %td
+              %pre `inline code`
+            %td
+              .wikistyle
+                %code inline code
+      / Orgmode Formatting
+      .page.org.formatting
+        %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+          %tr
+            %th Description
+            %th What you type
+            %th What you get
+          %tr
+            %td Bold
+            %td
+              %pre *bold text*
+            %td
+              %b bold text
+          %tr
+            %td Italic
+            %td
+              %pre /italic text/
+            %td
+              %i italic text
+          %tr
+            %td Inline code
+            %td
+              %pre =inline code=
+            %td
+              .wikistyle
+                %code inline code
+      / Pod Formatting
+      .page.pod.formatting
+        %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+          %tr
+            %th Description
+            %th What you type
+            %th What you get
+          %tr
+            %td Bold
+            %td
+              %pre B<bold text>
+            %td
+              %b bold text
+          %tr
+            %td Italic
+            %td
+              %pre I<italic text>
+            %td
+              %i italic text
+          %tr
+            %td Inline code
+            %td
+              %pre C<inline code>
+            %td
+              .wikistyle
+                %code inline code
+      / RDoc Formatting
+      .page.rdoc.formatting
+        %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+          %tr
+            %th Description
+            %th What you type
+            %th What you get
+          %tr
+            %td Bold
+            %td
+              %pre *bold text*
+            %td
+              %b bold text
+          %tr
+            %td Italic
+            %td
+              %pre _italic text_
+            %td
+              %i italic text
+          %tr
+            %td Monospace
+            %td
+              %pre +monospace text+
+            %td
+              %tt monospace text
+      / reStructuredText Formatting
+      .page.rest.formatting
+        %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+          %tr
+            %th Description
+            %th What you type
+            %th What you get
+          %tr
+            %td Bold
+            %td
+              %pre **bold text**
+            %td
+              %b bold text
+          %tr
+            %td Italic
+            %td
+              %pre *italic text*
+            %td
+              %i italic text
+          %tr
+            %td Monospace
+            %td
+              %pre ``monospace text``
+            %td
+              %tt monospace text
+      / Textile Formatting
+      .page.textile.formatting
+        %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+          %tr
+            %th Description
+            %th What you type
+            %th What you get
+          %tr
+            %td Bold
+            %td
+              %pre *bold text*
+            %td
+              %b bold text
+          %tr
+            %td Italic
+            %td
+              %pre _italic text_
+            %td
+              %i italic text
+          %tr
+            %td Inline code
+            %td
+              %pre @inline code@
+            %td
+              .wikistyle
+                %code inline code
+      / ================================================================
+      / Headers
+      / ================================================================
+      / Asciidoc, Creole Headers
+      .page.asciidoc.creole.rdoc.headers
+        %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+          %tr
+            %th Description
+            %th What you type
+            %th What you get
+          %tr
+            %td First level heading
+            %td
+              %pre = Heading Text
+            %td
+              %h1 Heading Text
+          %tr
+            %td Second level heading
+            %td
+              %pre == Heading Text
+            %td
+              %h2 Heading Text
+          %tr
+            %td Third level heading
+            %td
+              %pre === Heading Text
+            %td
+              %h3 Heading Text
+      / Orgmode Headers
+      .page.org.headers
+        %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+          %tr
+            %th Description
+            %th What you type
+            %th What you get
+          %tr
+            %td First level heading
+            %td
+              %pre * Heading Text
+            %td
+              %h1 Heading Text
+          %tr
+            %td Second level heading
+            %td
+              %pre ** Heading Text
+            %td
+              %h2 Heading Text
+          %tr
+            %td Third level heading
+            %td
+              %pre *** Heading Text
+            %td
+              %h3 Heading Text
+      / Markdown Headers
+      .page.markdown.headers
+        %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+          %tr
+            %th Description
+            %th What you type
+            %th What you get
+          %tr
+            %td First level heading
+            %td
+              %pre # Heading Text
+            %td
+              %h1 Heading Text
+          %tr
+            %td Second level heading
+            %td
+              %pre ## Heading Text
+            %td
+              %h2 Heading Text
+          %tr
+            %td Third level heading
+            %td
+              %pre ### Heading Text
+            %td
+              %h3 Heading Text
+      / Pod Headers
+      .page.pod.headers
+        %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+          %tr
+            %th Description
+            %th What you type
+            %th What you get
+          %tr
+            %td First level heading
+            %td
+              %pre =head1 Heading Text
+            %td
+              %h1 Heading Text
+          %tr
+            %td Second level heading
+            %td
+              %pre =head2 Heading Text
+            %td
+              %h2 Heading Text
+          %tr
+            %td Third level heading
+            %td
+              %pre =head3 Heading Text
+            %td
+              %h3 Heading Text
+      / reStructuredText Headers
+      .page.rest.headers
+        %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+          %tr
+            %th Description
+            %th What you type
+            %th What you get
+          %tr
+            %td First level heading
+            %td
+              %pre Heading Text
+              %pre ============
+            %td
+              %h1 Heading Text
+          %tr
+            %td Second level heading
+            %td
+              %pre Heading Text
+              %pre ------------
+            %td
+              %h2 Heading Text
+          %tr
+            %td Third level heading
+            %td
+              %pre Heading Text
+              %pre ~~~~~~~~~~~~
+            %td
+              %h3 Heading Text
+      / Textile Headers
+      .page.textile.headers
+        %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+          %tr
+            %th Description
+            %th What you type
+            %th What you get
+          %tr
+            %td First level heading
+            %td
+              %pre h1. Heading Text
+            %td
+              %h1 Heading Text
+          %tr
+            %td Second level heading
+            %td
+              %pre h2. Heading Text
+            %td
+              %h2 Heading Text
+          %tr
+            %td Third level heading
+            %td
+              %pre h3. Heading Text
+            %td
+              %h3 Heading Text
+      / Asciidoc Lists
+      .page.asciidoc.lists
+        %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+          %tr
+            %th Description
+            %th What you type
+            %th What you get
+          %tr
+            %td Unordered list
+            %td
+              %pre
+                * Item 1
+                %span.invisible ¬
+                ** Item 1.1
+                %span.invisible ¬
+                * Item 2
+                %span.invisible ¬
+                * Item 3
+            %td
+              .wikistyle
+                .ulist
+                  %ul
+                    %li
+                      %p Item 1
+                      .ulist
+                        %ul
+                          %li
+                            %p Item 1.1
+                    %li
+                      %p Item 2
+                    %li
+                      %p Item 3
+          %tr
+            %td Ordered list
+            %td
+              %pre
+                \. Item 1
+                %span.invisible ¬
+                \.. Item 1.1
+                %span.invisible ¬
+                \. Item 2
+                %span.invisible ¬
+                \. Item 3
+            %td
+              .wikistyle
+                .olist.arabic
+                  %ol.arabic
+                    %li
+                      %p Item 1
+                      .olist.loweralpha
+                        %ol.loweralpha
+                          %li
+                            %p
+                              Item 1.1
+                    %li
+                      %p Item 2
+                    %li
+                      %p Item 3
+      / Creole Lists
+      .page.creole.lists
+        %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+          %tr
+            %th Description
+            %th What you type
+            %th What you get
+          %tr
+            %td Unordered list
+            %td
+              %pre
+                * Item 1
+                %span.invisible ¬
+                ** Item 1.1
+                %span.invisible ¬
+                * Item 2
+                %span.invisible ¬
+                * Item 3
+            %td
+              .wikistyle
+                %ul
+                  %li
+                    Item 1
+                    %ul
+                      %li Item 1.1
+                  %li Item 2
+                  %li Item 3
+          %tr
+            %td Ordered list
+            %td
+              %pre
+                \# Item 1
+                %span.invisible ¬
+                \## Item 1.1
+                %span.invisible ¬
+                \# Item 2
+                %span.invisible ¬
+                \# Item 3
+            %td
+              .wikistyle
+                %ol
+                  %li
+                    Item 1
+                    %ol
+                      %li Item 1.1
+                  %li Item 2
+                  %li Item 3
+      / Markdown Lists
+      .page.markdown.lists
+        %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+          %tr
+            %th Description
+            %th What you type
+            %th What you get
+          %tr
+            %td Unordered list
+            %td
+              %pre
+                * Item 1
+                %span.invisible ¬
+                = succeed "*" do
+                  %span.invisible ····
+                Item 1.1
+                %span.invisible ¬
+                * Item 2
+                %span.invisible ¬
+                * Item 3
+            %td
+              .wikistyle
+                %ul
+                  %li
+                    Item 1
+                    %ul
+                      %li Item 1.1
+                  %li Item 2
+                  %li Item 3
+          %tr
+            %td Ordered list
+            %td
+              %pre
+                1. Item 1
+                %span.invisible ¬
+                = succeed "1." do
+                  %span.invisible ····
+                Item 1.1
+                %span.invisible ¬
+                2. Item 2
+                %span.invisible ¬
+                3. Item 3
+            %td
+              .wikistyle
+                %ol
+                  %li
+                    Item 1
+                    %ol
+                      %li Item 1.1
+                  %li Item 2
+                  %li Item 3
+      / Org Lists
+      .page.org.lists
+        %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+          %tr
+            %th Description
+            %th What you type
+            %th What you get
+          %tr
+            %td Unordered list
+            %td
+              %pre
+                \- Item 1
+                %span.invisible ¬
+                = succeed "-" do
+                  %span.invisible ····
+                Item 1.1
+                %span.invisible ¬
+                \- Item 2
+                %span.invisible ¬
+                \- Item 3
+            %td
+              .wikistyle
+                %ul
+                  %li
+                    Item 1
+                    %ol
+                      %li Item 1.1
+                  %li Item 2
+                  %li Item 3
+          %tr
+            %td Ordered list
+            %td
+              %pre
+                1. Item 1
+                %span.invisible ¬
+                = succeed "1." do
+                  %span.invisible ····
+                Item 1.1
+                %span.invisible ¬
+                2. Item 2
+                %span.invisible ¬
+                3. Item 3
+            %td
+              .wikistyle
+                %ol
+                  %li
+                    Item 1
+                    %ol
+                      %li Item 1.1
+                  %li Item 2
+                  %li Item 3
+      / Pod Lists
+      .page.pod.lists
+        %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+          %tr
+            %th Description
+            %th What you type
+            %th What you get
+          %tr
+            %td Unordered list
+            %td
+              %pre
+                \=over 4
+                %span.invisible ¬
+                %span.invisible ¬
+                \=item * Item 1
+                %span.invisible ¬
+                %span.invisible ¬
+                \=item * Item 2
+                %span.invisible ¬
+                %span.invisible ¬
+                \=item * Item 3
+                %span.invisible ¬
+                %span.invisible ¬
+                \=back
+            %td
+              .wikistyle
+                %ul
+                  %li Item 1
+                  %li Item 2
+                  %li Item 3
+          %tr
+            %td Ordered list
+            %td
+              %pre
+                \=over 4
+                %span.invisible ¬
+                %span.invisible ¬
+                \=item 1. Item 1
+                %span.invisible ¬
+                %span.invisible ¬
+                \=item 2. Item 2
+                %span.invisible ¬
+                %span.invisible ¬
+                \=item 3. Item 3
+                %span.invisible ¬
+                %span.invisible ¬
+                \=back
+            %td
+              .wikistyle
+                %ol
+                  %li Item 1
+                  %li Item 2
+                  %li Item 3
+      / RDoc Lists
+      .page.rdoc.lists
+        %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+          %tr
+            %th Description
+            %th What you type
+            %th What you get
+          %tr
+            %td Unordered list
+            %td
+              %pre
+                * Item 1
+                %span.invisible ¬
+                = succeed "*" do
+                  %span.invisible ··
+                Item 1.1
+                %span.invisible ¬
+                * Item 2
+                %span.invisible ¬
+                * Item 3
+            %td
+              .wikistyle
+                %ul
+                  %li
+                    Item 1
+                    %ul
+                      %li Item 1.1
+                  %li Item 2
+                  %li Item 3
+          %tr
+            %td Ordered list
+            %td
+              %pre
+                1. Item 1
+                %span.invisible ¬
+                = succeed "1." do
+                  %span.invisible ···
+                Item 1.1
+                %span.invisible ¬
+                2. Item 2
+                %span.invisible ¬
+                3. Item 3
+            %td
+              .wikistyle
+                %ol
+                  %li
+                    Item 1
+                    %ol
+                      %li Item 1.1
+                  %li Item 2
+                  %li Item 3
+      / reStructuredText Lists
+      .page.rest.lists
+        %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+          %tr
+            %th Description
+            %th What you type
+            %th What you get
+          %tr
+            %td Unordered list
+            %td
+              %pre
+                * Item 1
+                %span.invisible ¬
+                %span.invisible ¬
+                = succeed "*" do
+                  %span.invisible ··
+                Item 1.1
+                %span.invisible ¬
+                %span.invisible ¬
+                * Item 2
+                %span.invisible ¬
+                %span.invisible ¬
+                * Item 3
+            %td
+              .wikistyle
+                %ul
+                  %li
+                    Item 1
+                    %ul
+                      %li Item 1.1
+                  %li Item 2
+                  %li Item 3
+          %tr
+            %td Ordered list
+            %td
+              %pre
+                1. Item 1
+                %span.invisible ¬
+                %span.invisible ¬
+                = succeed "1." do
+                  %span.invisible ···
+                Item 1.1
+                %span.invisible ¬
+                %span.invisible ¬
+                2. Item 2
+                %span.invisible ¬
+                %span.invisible ¬
+                3. Item 3
+            %td
+              .wikistyle
+                %ol
+                  %li
+                    Item 1
+                    %ol
+                      %li Item 1.1
+                  %li Item 2
+                  %li Item 3
+      / Textile Lists
+      .page.textile.lists
+        %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+          %tr
+            %th Description
+            %th What you type
+            %th What you get
+          %tr
+            %td Unordered list
+            %td
+              %pre
+                * Item 1
+                %span.invisible ¬
+                = succeed "*" do
+                  %span.invisible ····
+                Item 1.1
+                %span.invisible ¬
+                * Item 2
+                %span.invisible ¬
+                * Item 3
+            %td
+              .wikistyle
+                %ul
+                  %li
+                    Item 1
+                    %ul
+                      %li Item 1.1
+                  %li Item 2
+                  %li Item 3
+          %tr
+            %td Ordered list
+            %td
+              %pre
+                1. Item 1
+                %span.invisible ¬
+                = succeed "1." do
+                  %span.invisible ····
+                Item 1.1
+                %span.invisible ¬
+                2. Item 2
+                %span.invisible ¬
+                3. Item 3
+            %td
+              .wikistyle
+                %ol
+                  %li
+                    Item 1
+                    %ol
+                      %li Item 1.1
+                  %li Item 2
+                  %li Item 3
+      / ================================================================
+      / Math
+      / ================================================================
+      .page.gollum.math
+        %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+          %tr
+            %th Description
+            %th What you type
+            %th What you get
+          %tr
+            %td Block
+            %td
+              %pre \[ \left( \sum_{k=1}^n a_k b_k \right)^2 \]
+            %td
+              %script{:type => "math/tex; mode=display"} \left( \sum_{k=1}^n a_k b_k \right)^2
+          %tr
+            %td Inline
+            %td
+              %pre Consider \( x^2 + y^2 \).
+            %td
+              Consider
+              = succeed "." do
+                %script{:type => "math/tex"} x^2 + y^2

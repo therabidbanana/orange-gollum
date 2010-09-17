@@ -1,0 +1,10 @@
+%article.gollum-wiki
+  %header
+    .actions
+      %a{:href => resource.wiki_url(packet) } Home
+      |
+      %a{:href => resource.wiki_url(packet) + 'edit/' + name } Edit
+      |
+      %a{:href => resource.wiki_url(packet) + 'history/' + name } History
+    %h1= page.title || title
+  %section= markdown(content)
