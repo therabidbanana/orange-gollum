@@ -1,3 +1,5 @@
+- part[:page_title] = (page.title || title) + " [wiki]"
+%script var gollum_root = "#{resource.wiki_url(packet)}";
 %article.gollum-wiki
   %header
     .actions
@@ -6,5 +8,5 @@
       %a{:href => resource.wiki_url(packet) + 'edit/' + name } Edit
       |
       %a{:href => resource.wiki_url(packet) + 'history/' + name } History
-    %h1= page.title || title
-  %section= markdown(content)
+    %h1= (page.title || title)
+  %section~ markdown(content)

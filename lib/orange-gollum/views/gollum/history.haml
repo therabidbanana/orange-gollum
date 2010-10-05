@@ -26,9 +26,9 @@
           - if page_num == 1
             %span.disabled &laquo; Previous
           - else
-            %a{:href=>"/history/#{page.name}?page_num=#{page_num-1}", :hotkey=>"h"} &laquo; Previous
+            %a{:href=>resource.wiki_url(packet) +"history/#{path}?page_num=#{page_num-1}", :hotkey=>"h"} &laquo; Previous
         .next_page
           - if versions.size == Gollum::Page.per_page
-            %a{:href=>"/history/#{page.name}?page_num=#{page_num+1}", :hotkey=>"1"} &raquo; Next
+            %a{:href=>resource.wiki_url(packet) +"history/#{path}?page_num=#{page_num+1}", :hotkey=>"1"} &raquo; Next
           - else
             %span.disabled &raquo; Next

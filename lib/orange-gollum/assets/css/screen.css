@@ -656,3 +656,31 @@ table.commits {
             color: #aaa;
             cursor: pointer;
           }
+.pagination .previous_page{
+	width: 49%;
+	float: left;
+}
+.pagination .disabled{
+	color: #bbb;
+}
+.pagination .next_page{
+	width: 49%;
+	float: right;
+	text-align: right;
+}
+article.gollum-wiki .actions{
+	text-align: right;
+}
+
+article.gollum-wiki .highlight{
+	margin: 1em auto;
+	padding: 1em;
+	width: 80%;
+	border: 1px dashed #bbb;
+	background: #eee;
+}
+
+
+article.gollum-wiki .highlight pre{
+	margin: 0;
+}

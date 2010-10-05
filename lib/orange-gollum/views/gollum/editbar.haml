@@ -158,7 +158,8 @@
                   The quick brown fox jumps
                   [[/example.png|float|align=left]]
                   over the lazy dog and feels as
-                  if he were in seventh heaven.            %td
+                  if he were in seventh heaven.            
+            %td
               .wikistyle
                 %p
                   The quick brown fox jumps
@@ -167,14 +168,15 @@
                       %img{:alt => "Shapes", :src => "/assets/_gollum_/images/example.png"}/
                   over the lazy dog and feels as if he were in seventh heaven.
           %tr
-            %td Image floated left
+            %td Image floated right
             %td
               %pre
                 :preserve
                   The quick brown fox jumps
                   [[/example.png|float|align=right]]
                   over the lazy dog and feels as
-                  if he were in seventh heaven.            %td
+                  if he were in seventh heaven.            
+            %td
               .wikistyle
                 %p
                   The quick brown fox jumps
@@ -193,28 +195,21 @@
             %td Hilighted Code block
             %td
               %pre
-                ```ruby
-                %span.invisible ¬
-                = succeed "def" do
-                  %span.invisible ··
-                foo
-                %span.invisible ¬
-                = succeed "puts" do
-                  %span.invisible ····
-                'bar'
-                %span.invisible ¬
-                = succeed "end" do
-                  %span.invisible ··
-                %span.invisible ¬
-                ```
+                :preserve
+                  ```ruby
+                  
+                  def foo
+                    puts 'bar'
+                  end
+                  
+                  ```
             %td
               .highlight
                 %pre
-                  %span.k def
-                  %span.nf foo
-                  %span.nb puts
-                  %span.s1 'bar'
-                  %span.k end
+                  :preserve
+                    <span class="k">def</span> <span class="nf">def</span>
+                      <span class="nb">puts</span> <span class="s1">'bar'</span>
+                    <span class="k">end</span>
         %table.shortcodes{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
           %tr
             %th{:colspan => "2"} Language Identifiers for use in Hilighted Code Blocks

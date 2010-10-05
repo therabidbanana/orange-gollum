@@ -99,10 +99,11 @@ class Orange::GollumResource < Orange::Resource
   end
   
   def history(packet, opts = {})
+    opts.with_defaults!(packet.request.params)
     opts[:path] ||= (packet['route.resource_path'] || "Home")
     opts[:name] = opts[:path]
     opts[:page] ||= gollum(packet).page(opts[:path])
-    opts[:page_num] = [opts[:page_num].to_i, 1].max
+    opts[:page_num] = [opts[:page_num].to_i, 1, opts.delete("page_num").to_i].max
     page = opts[:page]
     versions = page.versions :page => opts[:page_num]
     
