@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/orange-project/orange-sparkles.git
-  revision: c0339c0e01b74e56a487c0302cf66f7e5f2d8938
+  revision: 1646293b0d1d0eb024a07b336bdda42263ebed0f
   specs:
     orange-sparkles (0.5.9)
       kramdown
@@ -10,7 +10,7 @@ GIT
 
 GIT
   remote: git://github.com/therabidbanana/orange-core.git
-  revision: 54ed60985aa0974f6bde6ab858ce547783008d0e
+  revision: 8415af2f9a1e7cce40c99dd0dc5e1b8f2897ef8c
   specs:
     orange-core (0.7.0)
       crack
@@ -21,7 +21,7 @@ GIT
 
 GIT
   remote: git://github.com/therabidbanana/orange-more.git
-  revision: 906d5af71f761e58d848aaf5ec48f711d6aecb73
+  revision: fa40273694759768a5683bafa8b023a36881f8a2
   specs:
     orange-more (0.6.5)
       dm-is-awesome_set (>= 0.11.0)
@@ -90,9 +90,9 @@ GEM
     grit (2.2.0)
       diff-lcs (~> 1.1)
       mime-types (~> 1.15)
-    haml (3.0.18)
+    haml (3.0.21)
     hpricot (0.8.2)
-    kramdown (0.10.0)
+    kramdown (0.11.0)
     mail (2.2.6.1)
       activesupport (>= 2.3.6)
       mime-types
