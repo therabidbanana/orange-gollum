@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{orange-gollum}
-  s.version = "0.0.0"
+  s.version = "1.0.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["David Haslem"]
-  s.date = %q{2010-09-17}
+  s.date = %q{2010-10-05}
   s.description = %q{Orange-Gollum uses the gollum gem to integrate a wiki with an orange site}
   s.email = %q{therabidbanana@gmail.com}
   s.extra_rdoc_files = [
@@ -423,7 +423,7 @@ Gem::Specification.new do |s|
   s.homepage = %q{http://orangerb.com}
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.3.7}
+  s.rubygems_version = %q{1.3.6}
   s.summary = %q{Orange-Gollum integrates a gollum powered wiki with your site}
   s.test_files = [
     "spec/orange-gollum_spec.rb",
@@ -434,7 +434,7 @@ Gem::Specification.new do |s|
     current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION
     s.specification_version = 3
 
-    if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
+    if Gem::Version.new(Gem::RubyGemsVersion) >= Gem::Version.new('1.2.0') then
       s.add_development_dependency(%q<rspec>, [">= 1.2.9"])
       s.add_development_dependency(%q<yard>, [">= 0"])
       s.add_runtime_dependency(%q<gollum>, [">= 0"])
